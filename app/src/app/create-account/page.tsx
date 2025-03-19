@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CreateAccountPage = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -18,7 +20,9 @@ const CreateAccountPage = () => {
               <input type="email" className="input" placeholder="Email" />
               <label className="fieldset-label">Password</label>
               <input type="password" className="input" placeholder="Password" />
-              <div><a className="link link-hover">Forgot password?</a></div>
+              <div className="flex justify-end">
+                <Link className="link link-hover" href="/login">Have an account? Login</Link>
+              </div>
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
           </div>
