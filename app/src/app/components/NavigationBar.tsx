@@ -27,7 +27,7 @@ export const NavigationBar = () => {
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
               <li><Link href="about-us">About Us</Link></li>
-              <li><Link href="create-account">Create List</Link></li>
+              <li><Link href="create-account">Create Account</Link></li>
             </ul>
           </div>
         </div>
