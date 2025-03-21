@@ -29,6 +29,12 @@ export const NavigationBar = () => {
               <li><Link href="/about-us">About Us</Link></li>
               <li><Link href="/create-account">Create Account</Link></li>
               <li><Link href="/login">Login</Link></li>
+              <li><Link href="/view-recipes">View Recipes</Link></li>
+              <div className="avatar">
+                <div className="w-10 rounded-full">
+                  <img src="/defaultProfilePictures/NoAccount.jpg" />
+                </div>
+              </div>
             </ul>
           </div>
         </div>
@@ -40,6 +46,7 @@ export const NavigationBar = () => {
           <li><Link href="/about-us">About Us</Link></li>
           <li><Link href="/create-account">Create Account</Link></li>
           <li><Link href="/login">Login</Link></li>
+          <li><Link href="/view-recipes">View Recipes</Link></li>
         </ul>
       </div>
     </div>
