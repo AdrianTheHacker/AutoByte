@@ -95,7 +95,7 @@ const ViewRecipes = () => {
       <ul className="w-1/2 grid grid-cols-3 gap-4 justify-center items-center">
         {recipes.map((recipe) => (
           <div key={recipe.name}>
-            <li className="card bg-base-100 w-80 shadow-sm transition duration-350 hover:scale-110">
+            <li className="z-10 card bg-base-100 w-80 shadow-sm transition duration-350 hover:scale-110 hover:z-50">
               <figure className="px-10 pt-10">
                 <img
                   src={recipe.photoURL}
