@@ -1,0 +1,87 @@
+{
+  "recipes": [
+    {
+      "name": "Steak Diane",
+      "photoURL": "testing/steakDiane.avif",
+      "description": "Believe it or not, a fancy steak dinner can count as a 30-minute meal! Ree's take on steak is easy yet delicious: it features a pan-fried steak topped with a savory sauce that you'll want to lick off the plate. Pair it with a simple side of string beans for a well-rounded meal!",
+      "source": "https://www.thepioneerwoman.com/food-cooking/recipes/a61827998/steak-diane-recipe/",
+      "ingredients": [
+        { "name": "Strip steaks", "quantityInGrams": 454 },
+        { "name": "Salted butter", "quantityInGrams": 28 },
+        { "name": "Olive oil", "quantityInGrams": 27 },
+        { "name": "Red onion", "quantityInGrams": 100 },
+        { "name": "Garlic cloves", "quantityInGrams": 9 },
+        { "name": "Fresh thyme leaves", "quantityInGrams": 1 },
+        { "name": "Brandy", "quantityInGrams": 120 },
+        { "name": "Heavy cream", "quantityInGrams": 240 },
+        { "name": "Whole-grain mustard", "quantityInGrams": 15 },
+        { "name": "Balsamic reduction", "quantityInGrams": 15 },
+        { "name": "Minced chives", "quantityInGrams": 9 },
+        { "name": "Kosher salt", "quantityInGrams": 0 },
+        { "name": "Black pepper", "quantityInGrams": 0 }
+      ]
+    },
+    {
+      "name": "Shrimp Alfredo",
+      "photoURL": "testing/shrimpAlfredo.avif",
+      "description": "This creamy, dreamy fettuccine Alfredo will transport you straight to Italy (or at least your favorite Italian restaurant) in just 30 minutes. The four-ingredient sauce and frozen shrimp will make this recipe a weekly staple.",
+      "source": "https://www.thepioneerwoman.com/food-cooking/recipes/a63137669/shrimp-alfredo-recipe/",
+      "ingredients": [
+        { "name": "Fettuccine", "quantityInGrams": 340 },
+        { "name": "Olive oil", "quantityInGrams": 27 },
+        { "name": "Salted butter", "quantityInGrams": 170 },
+        { "name": "Jumbo shrimp, peeled and deveined", "quantityInGrams": 454 },
+        { "name": "Heavy cream", "quantityInGrams": 360 },
+        { "name": "Garlic cloves", "quantityInGrams": 6 },
+        { "name": "Freshly grated parmesan cheese", "quantityInGrams": 227 },
+        { "name": "Fresh parsley, chopped", "quantityInGrams": 30 },
+        { "name": "Kosher salt", "quantityInGrams": 0 },
+        { "name": "Black pepper", "quantityInGrams": 0 }
+      ]
+    },
+    {
+      "name": "Caprese Chicken",
+      "photoURL": "testing/capreseChicken.avif",
+      "description": "Instead of spending your evening making both roast chicken and caprese salad, combine them both into one quick dish! This chicken dinner is cheesy, herby and bursting with juicy cherry tomatoes.",
+      "source": "https://www.thepioneerwoman.com/food-cooking/recipes/a61855912/caprese-chicken-recipe/",
+      "ingredients": [
+        { "name": "Cherry tomatoes", "quantityInGrams": 300 },
+        { "name": "Olive oil", "quantityInGrams": 54 },
+        { "name": "Prepared pesto", "quantityInGrams": 30 },
+        { "name": "Balsamic reduction", "quantityInGrams": 15 },
+        { "name": "Salted butter", "quantityInGrams": 28 },
+        { "name": "Chicken cutlets", "quantityInGrams": 567 },
+        { "name": "Fresh basil leaves", "quantityInGrams": 10 },
+        { "name": "Fresh mozzarella", "quantityInGrams": 170 },
+        { "name": "Ciabatta bread", "quantityInGrams": 200 },
+        { "name": "Kosher salt", "quantityInGrams": 0 },
+        { "name": "Black pepper", "quantityInGrams": 0 }
+      ]
+    },
+    {
+      "name": "Chili Mac and Cheese",
+      "photoURL": "testing/chiliMacAndCheese.avif",
+      "description": "This hearty noodle dish is a step above the Hamburger Helper you grew up eating, but just as easy to make! As its name suggests, it features a comforting combination of hearty beef chili and gooey mac and cheese.",
+      "source": "https://www.thepioneerwoman.com/food-cooking/recipes/a62058968/chili-mac-and-cheese-recipe/",
+      "ingredients": [
+        { "name": "Olive oil", "quantityInGrams": 27 },
+        { "name": "Ground beef", "quantityInGrams": 454 },
+        { "name": "Garlic cloves", "quantityInGrams": 9 },
+        { "name": "Yellow onion", "quantityInGrams": 110 },
+        { "name": "Chili powder", "quantityInGrams": 14 },
+        { "name": "Ground cumin", "quantityInGrams": 4 },
+        { "name": "Beef broth", "quantityInGrams": 720 },
+        { "name": "Tomato sauce", "quantityInGrams": 227 },
+        { "name": "Large elbow macaroni", "quantityInGrams": 340 },
+        { "name": "Pinto beans, drained", "quantityInGrams": 425 },
+        { "name": "Cheddar cheese, grated", "quantityInGrams": 170 },
+        { "name": "Pepper jack cheese, grated", "quantityInGrams": 113 },
+        { "name": "Cilantro", "quantityInGrams": 10 },
+        { "name": "Hot sauce", "quantityInGrams": 0 },
+        { "name": "Sour cream", "quantityInGrams": 0 },
+        { "name": "Kosher salt", "quantityInGrams": 0 },
+        { "name": "Black pepper", "quantityInGrams": 0 }
+      ]
+    }
+  ]
+}

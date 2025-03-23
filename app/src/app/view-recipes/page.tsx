@@ -1,9 +1,10 @@
 'use client'
 
-import { Ingredient } from "../objects/objects"
 import { Recipe } from "../objects/objects"
+import { useEffect, useState } from "react";
 
-const ViewRecipes = () => {
+export const ViewRecipes = () => {
+  {/*}
   const recipes: Recipe[] = [
     {
       name: "Steak Diane",
@@ -89,13 +90,22 @@ const ViewRecipes = () => {
       ]
     }
   ]
+  */}
+
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  useEffect(() => {
+    fetch("/test-data.JSON")
+      .then((response) => response.json())
+      .then((data) => setRecipes(data.recipes))
+      .catch((error) => console.error("Error loading JSON:", error));
+  }, []);
 
   return (
-    <div className="w-dvw flex justify-center items-center">
-      <ul className="w-1/2 grid grid-cols-3 gap-4 justify-center items-center">
-        {recipes.map((recipe) => (
+    <div className="w-dvw flex justify-center items-center"> 
+      <ul className="w-1/2 flex flex-row flex-wrap gap-4 justify-center items-center">
+        {recipes.map((recipe: Recipe) => (
           <div key={recipe.name}>
-            <li className="z-10 card bg-base-100 w-80 shadow-sm transition duration-350 hover:scale-110 hover:z-50">
+            <li className="z-10 card bg-base-100 w-60 shadow-sm transition duration-350 hover:scale-110 hover:z-50">
               <figure className="px-10 pt-10">
                 <img
                   src={recipe.photoURL}
