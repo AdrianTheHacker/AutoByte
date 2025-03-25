@@ -5,92 +5,6 @@ import { useState, useEffect } from "react"
 import { collection, onSnapshot } from "firebase/firestore"
 
 const ViewRecipes = () => {
-  // const recipes: Recipe[] = [
-  //   {
-  //     name: "Steak Diane",
-  //     photoURL: "testing/steakDiane.avif",
-  //     description: "Believe it or not, a fancy steak dinner can count as a 30-minute meal! Ree's take on steak is easy yet delicious: it features a pan-fried steak topped with a savory sauce that you'll want to lick off the plate. Pair it with a simple side of string beans for a well-rounded meal!",
-  //     source: "https://www.thepioneerwoman.com/food-cooking/recipes/a61827998/steak-diane-recipe/",
-  //     ingredients: [
-  //       { name: "Strip steaks", quantityInGrams: 454 }, // 2 (8-oz.) steaks ≈ 454g
-  //       { name: "Salted butter", quantityInGrams: 28 }, // 2 Tbsp. ≈ 28g
-  //       { name: "Olive oil", quantityInGrams: 27 }, // 2 Tbsp. ≈ 27g
-  //       { name: "Red onion", quantityInGrams: 100 }, // Approx. size of a small red onion
-  //       { name: "Garlic cloves", quantityInGrams: 9 }, // 3 cloves ≈ 9g
-  //       { name: "Fresh thyme leaves", quantityInGrams: 1 }, // 1 tsp. ≈ 1g
-  //       { name: "Brandy", quantityInGrams: 120 }, // 1/2 cup ≈ 120g
-  //       { name: "Heavy cream", quantityInGrams: 240 }, // 1 cup ≈ 240g
-  //       { name: "Whole-grain mustard", quantityInGrams: 15 }, // 1 Tbsp. ≈ 15g
-  //       { name: "Balsamic reduction", quantityInGrams: 15 }, // 1 Tbsp. ≈ 15g
-  //       { name: "Minced chives", quantityInGrams: 9 }, // 3 Tbsp. ≈ 9g
-  //       { name: "Kosher salt", quantityInGrams: 0 }, // To taste
-  //       { name: "Black pepper", quantityInGrams: 0 } // To taste
-  //     ]
-  //   },
-  //   {
-  //     name: "Shrimp Alfredo",
-  //     photoURL: "testing/shrimpAlfredo.avif",
-  //     description: "This creamy, dreamy fettuccine Alfredo will transport you straight to Italy (or at least your favorite Italian restaurant) in just 30 minutes. The four-ingredient sauce and frozen shrimp will make this recipe a weekly staple.",
-  //     source: "https://www.thepioneerwoman.com/food-cooking/recipes/a63137669/shrimp-alfredo-recipe/",
-  //     ingredients: [
-  //       { name: "Fettuccine", quantityInGrams: 340 }, // 12 oz. ≈ 340g
-  //       { name: "Olive oil", quantityInGrams: 27 }, // 2 Tbsp. ≈ 27g
-  //       { name: "Salted butter", quantityInGrams: 170 }, // 12 Tbsp. ≈ 170g
-  //       { name: "Jumbo shrimp, peeled and deveined", quantityInGrams: 454 }, // 1 lb. ≈ 454g
-  //       { name: "Heavy cream", quantityInGrams: 360 }, // 1 1/2 cups ≈ 360g
-  //       { name: "Garlic cloves", quantityInGrams: 6 }, // 2 cloves ≈ 6g
-  //       { name: "Freshly grated parmesan cheese", quantityInGrams: 227 }, // 8 oz. ≈ 227g
-  //       { name: "Fresh parsley, chopped", quantityInGrams: 30 }, // 1/2 cup ≈ 30g
-  //       { name: "Kosher salt", quantityInGrams: 0 }, // To taste
-  //       { name: "Black pepper", quantityInGrams: 0 } // To taste
-  //     ]
-  //   }, 
-  //   {
-  //     name: "Caprese Chicken",
-  //     photoURL: "testing/capreseChicken.avif",
-  //     description: "Instead of spending your evening making both roast chicken and caprese salad, combine them both into one quick dish! This chicken dinner is cheesy, herby and bursting with juicy cherry tomatoes.",
-  //     source: "https://www.thepioneerwoman.com/food-cooking/recipes/a61855912/caprese-chicken-recipe/",
-  //     ingredients: [
-  //       { name: "Cherry tomatoes", quantityInGrams: 300 }, // 2 cups ≈ 300g
-  //       { name: "Olive oil", quantityInGrams: 54 }, // 4 Tbsp. (2 for tomatoes + 2 for chicken) ≈ 54g
-  //       { name: "Prepared pesto", quantityInGrams: 30 }, // 2 Tbsp. ≈ 30g
-  //       { name: "Balsamic reduction", quantityInGrams: 15 }, // 1 Tbsp. ≈ 15g
-  //       { name: "Salted butter", quantityInGrams: 28 }, // 2 Tbsp. ≈ 28g
-  //       { name: "Chicken cutlets", quantityInGrams: 567 }, // 1.25 to 1.5 lbs. ≈ 567g
-  //       { name: "Fresh basil leaves", quantityInGrams: 10 }, // 6 large leaves ≈ 10g
-  //       { name: "Fresh mozzarella", quantityInGrams: 170 }, // 6 slices ≈ 170g
-  //       { name: "Ciabatta bread", quantityInGrams: 200 }, // Approximate weight for slices
-  //       { name: "Kosher salt", quantityInGrams: 0 }, // To taste
-  //       { name: "Black pepper", quantityInGrams: 0 } // To taste
-  //     ]
-  //   }, 
-  //   {
-  //     name: "Chili Mac and Cheese",
-  //     photoURL: "testing/chiliMacAndCheese.avif",
-  //     description: "This hearty noodle dish is a step above the Hamburger Helper you grew up eating, but just as easy to make! As its name suggests, it features a comforting combination of hearty beef chili and gooey mac and cheese.",
-  //     source: "https://www.thepioneerwoman.com/food-cooking/recipes/a62058968/chili-mac-and-cheese-recipe/",
-  //     ingredients: [
-  //       { name: "Olive oil", quantityInGrams: 27 }, // 2 Tbsp. ≈ 27g
-  //       { name: "Ground beef", quantityInGrams: 454 }, // 1 lb. ≈ 454g
-  //       { name: "Garlic cloves", quantityInGrams: 9 }, // 3 cloves ≈ 9g
-  //       { name: "Yellow onion", quantityInGrams: 110 }, // Small onion ≈ 110g
-  //       { name: "Chili powder", quantityInGrams: 14 }, // 2 Tbsp. ≈ 14g
-  //       { name: "Ground cumin", quantityInGrams: 4 }, // 2 tsp. ≈ 4g
-  //       { name: "Beef broth", quantityInGrams: 720 }, // 3 cups ≈ 720g
-  //       { name: "Tomato sauce", quantityInGrams: 227 }, // 8-oz. can ≈ 227g
-  //       { name: "Large elbow macaroni", quantityInGrams: 340 }, // 12 oz. ≈ 340g
-  //       { name: "Pinto beans, drained", quantityInGrams: 425 }, // 15-oz. can ≈ 425g
-  //       { name: "Cheddar cheese, grated", quantityInGrams: 170 }, // 6 oz. ≈ 170g
-  //       { name: "Pepper jack cheese, grated", quantityInGrams: 113 }, // 4 oz. ≈ 113g
-  //       { name: "Cilantro", quantityInGrams: 10 }, // Small bunch ≈ 10g
-  //       { name: "Hot sauce", quantityInGrams: 0 }, // To taste
-  //       { name: "Sour cream", quantityInGrams: 0 }, // Optional
-  //       { name: "Kosher salt", quantityInGrams: 0 }, // To taste
-  //       { name: "Black pepper", quantityInGrams: 0 } // To taste
-  //     ]
-  //   }
-  // ]
-
   const [recipes, setRecipes] = useState([])
   const recipesCollectionReference = collection(database, "Recipes")
 
@@ -109,17 +23,38 @@ const ViewRecipes = () => {
   return (
     <div className="w-dvw flex justify-center items-center">
       <ul className="w-1/2 flex flex-wrap gap-4 justify-center items-center">
-        {recipes.map((recipe, index) => (
-          <div className="card w-96 h-60 bg-base-100 card-md shadow-sm" key={ recipe.id }>
-            <div className="card-body">
-              <h2 className="card-title">{ recipe.Title }</h2>
-              <p>{ recipe.Description.substring(0, 200) + "..." }</p>
-              <div className="justify-end card-actions">
-                <button className="btn" onClick={() => open(recipe.Source)}>Source</button>
-                <button className="btn btn-primary">More Information</button>
+        {recipes.map((recipe) => (
+          <div key={ recipe.id }>
+            <div className="card w-96 h-60 bg-base-100 card-md shadow-sm">
+              <div className="card-body">
+                <h2 className="card-title">{ recipe.Title }</h2>
+                <p>{ recipe.Description.substring(0, 200) + "..." }</p>
+                <div className="justify-end card-actions">
+                  <button className="btn"><svg className="fill-base-content" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.753 15.467c1.301 1.821.939 3.104 2.247 4.938l-5.041 3.595c-2.723-2.027-5.072-2.677-5.83-2.932-.723-.243-1.189-.706-1.029-1.289.164-.589.779-.764 1.286-.741.765.035 1.386.265 1.386.265l-3.516-4.93c-.314-.44-.211-1.051.229-1.365s1.05-.211 1.363.229l2.383 3.333c.114.161.338.199.498.084.162-.115.199-.339.085-.5l-.587-.823.944-.235c.248-.06.507.036.655.244l.48.673c.115.161.338.199.499.084s.197-.338.083-.5l-.555-.777.928-.208c.243-.052.495.045.64.247l.407.572c.114.161.339.198.5.084.16-.115.198-.339.084-.5l-.458-.641.273-.048c.952-.167 1.468.329 2.046 1.141zm-10.838-3.248c.61-.436 1.399-.45 1.987.002-.335-1.121-1.676-1.583-2.63-.902-.955.681-.952 2.099-.002 2.779-.235-.703.035-1.444.645-1.879zm1.577 10.745c-.682-.229-1.188-.571-1.569-.964h-6.923v-14h3v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h6v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h3v4.6c.541-.098 1.486-.294 2-.302v-6.298h-5v-2c0-2.209-1.791-4-4-4s-4 1.791-4 4v2h-5v18h13.134c-1-.49-1.683-.723-2.642-1.036zm-4.492-18.964c0-1.654 1.346-3 3-3s3 1.346 3 3v2h-6v-2z"/></svg></button>
+                  <button className="btn" onClick={() => open(recipe.Source)}>Source</button>
+                  <button className="btn btn-primary" onClick={() => document.getElementById(recipe.Title+'-modal')!.classList.add('modal-open') }>More Information</button>
+                </div>
               </div>
             </div>
+            <dialog id={recipe.Title+'-modal'} className="modal">
+              <div className="modal-box">
+                {/* <figure className="px-10 pt-10">
+                  <img
+                    src={recipe.id}
+                    alt={recipe.Title}
+                    className="rounded-xl" />
+                </figure> */}
+                <h3 className="font-bold text-lg">{recipe.Title}</h3>
+                <p className="py-4 text-lg">{recipe.Description}</p>
+                <div className="modal-action">
+                  <button className="btn"><svg className="fill-base-content" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.753 15.467c1.301 1.821.939 3.104 2.247 4.938l-5.041 3.595c-2.723-2.027-5.072-2.677-5.83-2.932-.723-.243-1.189-.706-1.029-1.289.164-.589.779-.764 1.286-.741.765.035 1.386.265 1.386.265l-3.516-4.93c-.314-.44-.211-1.051.229-1.365s1.05-.211 1.363.229l2.383 3.333c.114.161.338.199.498.084.162-.115.199-.339.085-.5l-.587-.823.944-.235c.248-.06.507.036.655.244l.48.673c.115.161.338.199.499.084s.197-.338.083-.5l-.555-.777.928-.208c.243-.052.495.045.64.247l.407.572c.114.161.339.198.5.084.16-.115.198-.339.084-.5l-.458-.641.273-.048c.952-.167 1.468.329 2.046 1.141zm-10.838-3.248c.61-.436 1.399-.45 1.987.002-.335-1.121-1.676-1.583-2.63-.902-.955.681-.952 2.099-.002 2.779-.235-.703.035-1.444.645-1.879zm1.577 10.745c-.682-.229-1.188-.571-1.569-.964h-6.923v-14h3v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h6v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h3v4.6c.541-.098 1.486-.294 2-.302v-6.298h-5v-2c0-2.209-1.791-4-4-4s-4 1.791-4 4v2h-5v18h13.134c-1-.49-1.683-.723-2.642-1.036zm-4.492-18.964c0-1.654 1.346-3 3-3s3 1.346 3 3v2h-6v-2z"/></svg></button>
+                  <button className="btn" onClick={() => { open(recipe.id) }}>Source</button>
+                  <button className="btn" onClick={() => { document.getElementById(recipe.Title+'-modal')!.classList.remove('modal-open'); }}>Close</button>
+                </div>
+              </div>
+            </dialog>
           </div>
+          
           // <div key={recipe.id}>
           //   <li className="z-10 card bg-base-100 w-80 shadow-sm transition duration-350 hover:scale-110 hover:z-50">
           //     <figure className="px-10 pt-10">
