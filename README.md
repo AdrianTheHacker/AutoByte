@@ -18,7 +18,6 @@ Whether you're looking to save time, cut costs, or simply eat healthier, AUTOBYT
 
 ```js
 import { initializeApp } from "firebase/app"
-import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
@@ -33,7 +32,6 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
 const database = getFirestore(app)
 
 export { database }
