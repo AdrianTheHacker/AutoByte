@@ -108,41 +108,6 @@ const ViewRecipes = () => {
               </div>
             </dialog>
           </li>
-          
-          // <div key={recipe.id}>
-          //   <li className="z-10 card bg-base-100 w-80 shadow-sm transition duration-350 hover:scale-110 hover:z-50">
-          //     <figure className="px-10 pt-10">
-          //       <img
-          //         src={recipe.id}
-          //         alt={recipe.Title}
-          //         className="rounded-xl" />
-          //     </figure>
-          //     <div className="card-body items-center text-center">
-          //       <h2 className="card-title">{recipe.Title} </h2>
-          //       <p>{recipe.Description.substring(0, 40) + "..."}</p>
-          //       <div className="card-actions">
-          //         <button className="btn" onClick={() => { open(recipe.id) }}>Source</button>
-          //         <button className="btn btn-primary" onClick={() => { document.getElementById(recipe.Title+'-modal')!.classList.add('modal-open'); }}>More Info</button>
-          //       </div>
-          //     </div>
-          //   </li>
-          //   <dialog id={recipe.Title+'-modal'} className="modal">
-          //     <div className="modal-box">
-          //     <figure className="px-10 pt-10">
-          //       <img
-          //         src={recipe.id}
-          //         alt={recipe.Title}
-          //         className="rounded-xl" />
-          //     </figure>
-          //       <h3 className="font-bold text-lg">{recipe.Title}</h3>
-          //       <p className="py-4 text-lg">{recipe.Description}</p>
-          //       <div className="modal-action">
-          //         <button className="btn" onClick={() => { open(recipe.id) }}>Source</button>
-          //         <button className="btn" onClick={() => { document.getElementById(recipe.Title+'-modal')!.classList.remove('modal-open'); }}>Close</button>
-          //       </div>
-          //     </div>
-          //   </dialog>
-          // </div>
         ))}
       </ul>
     </div>
