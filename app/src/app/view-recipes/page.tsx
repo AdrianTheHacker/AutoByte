@@ -22,7 +22,7 @@ const ViewRecipes = () => {
 
   return (
     <div className="w-dvw flex justify-center items-center">
-      <ul className="w-1/2 flex flex-wrap gap-4 justify-center items-center">
+      <ul className="w-2/3 flex flex-wrap gap-4 justify-center items-center">
         {recipes.map((recipe) => (
           <div key={ recipe.id }>
             <div className="card w-96 h-60 bg-base-100 card-md shadow-sm">
