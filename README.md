@@ -9,7 +9,7 @@ Whether you're looking to save time, cut costs, or simply eat healthier, AUTOBYT
 
 ### Setup
 *Ensure NodeJS and npm are installed on your machine.<br>
-*If you plan on developing a new feature, please do so in a separate branch.
+*If you plan on developing a new feature, please do so in a separate branch.<br>
 *Ensure ALL code is written with indentation set to 2 spaces.
 1. Clone the Repository.
 2. Open the Repository and navigate to the `app` folder.
