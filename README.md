@@ -13,7 +13,31 @@ Whether you're looking to save time, cut costs, or simply eat healthier, AUTOBYT
 1. Clone the Repository.
 2. Open the Repository and navigate to the `app` folder.
 3. Run `npm install` to install all necessary dependencies.
-4. Copy contents of `firebaseConfig` (Found in Firebase `Console>>AutoByte>>NextJS App`) into `src>>app>>firebase.env.js`.
+4. Navigate to `.>>src>>app` and create a file named `firebase.env.config.js`
+5. Copy the following contents into `firebase.env.config.js`. Ensure to switch `firebaseConfig`'s data with your own:
+
+```js
+import { initializeApp } from "firebase/app"
+import { getAnalytics } from "firebase/analytics"
+import { getFirestore } from "firebase/firestore"
+
+const firebaseConfig = {
+  apiKey: "YOUR API KEY",
+  authDomain: "YOUR AUTH DOMAIN",
+  databaseURL: "YOUR DATABASE URL",
+  projectId: "YOUR PROJECT ID",
+  storageBucket: "YOUR STORAGE BUCKET",
+  messagingSenderId: "YOUR MESSAGING SENDER ID",
+  appId: "YOUR APP ID",
+  measurementId: "YOUR MEASUREMENT ID"
+}
+
+const app = initializeApp(firebaseConfig)
+const analytics = getAnalytics(app)
+const database = getFirestore(app)
+
+export { database }
+```
 5. Run `npm run dev`
 
 ## Contact Us
