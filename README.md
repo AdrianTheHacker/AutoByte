@@ -10,10 +10,11 @@ Whether you're looking to save time, cut costs, or simply eat healthier, AUTOBYT
 ### Setup
 *Ensure NodeJS and npm are installed on your machine.<br>
 *If you plan on developing a new feature, please do so in a separate branch.
+*Ensure ALL code is written with indentation set to 2 spaces.
 1. Clone the Repository.
 2. Open the Repository and navigate to the `app` folder.
 3. Run `npm install` to install all necessary dependencies.
-4. Navigate to `.>>src>>app` and create a file named `firebase.env.config.js`
+4. Navigate to `./src/app` and create a file named `firebase.env.config.js`
 5. Copy the following contents into `firebase.env.config.js`. Ensure to switch `firebaseConfig`'s data with your own:
 
 ```js
@@ -36,7 +37,7 @@ const database = getFirestore(app)
 
 export { database }
 ```
-5. Run `npm run dev`
+6. Run `npm run dev`
 
 ## Contact Us
 [AdrianTarantino](https://github.com/AdrianTarantino)<br>
