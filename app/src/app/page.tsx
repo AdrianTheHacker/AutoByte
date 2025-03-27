@@ -9,8 +9,7 @@ export default function Home() {
           <p className="py-6 text-xl">
             Fast, Easy, and Cost Effective meal prepping.
           </p>
-          <Link className="m-8" href="/login">Login</Link>
-          <Link className="btn btn-primary" href="/create-account">Get Started</Link>
+          <Link className="btn btn-primary" href="/view-recipes">View Recipes🍔</Link>
         </div>
       </div>
     </div>
