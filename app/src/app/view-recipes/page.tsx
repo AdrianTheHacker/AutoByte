@@ -36,7 +36,7 @@ const ViewRecipes = () => {
               className="rounded-xl" />
           </figure> */}
           <h3 className="font-bold text-lg">Your Selection</h3>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto overflow-y-scroll no-scrollbar h-96">
             <table className="table table-zebra">
               <tbody>
                 {selectionList.map((recipe) => (
@@ -45,7 +45,7 @@ const ViewRecipes = () => {
                     <td>{recipe.Title}</td>
                     <td><Link href={recipe.Source} className="link link-hover">Source</Link></td>
                   </tr>
-                ))} 
+                ))}
               </tbody>
             </table>
           </div>
