@@ -6,11 +6,13 @@ import { collection, onSnapshot } from "firebase/firestore"
 import Recipe from "../components/objects/recipe"
 import Link from "next/link"
 import ViewIngredientsList from "./components/view-ingredients-list"
+import Ingredient from "../components/objects/ingredient.js"
 
 const ViewRecipes = () => {
   const [recipes, setRecipes] = useState([])
   const [selectionCount, setSelectionCount] = useState<number>(0)
   const [selectionList, setSelectionList] = useState<Recipe[]>([])
+  const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([])
 
   const recipesCollectionReference = collection(database, "Recipes")
   useEffect(() => {
@@ -43,7 +45,7 @@ const ViewRecipes = () => {
           </figure> */}
           <h3 className="font-bold text-lg text-center mb-4">Your Selection</h3>
           <div className="overflow-x-auto overflow-y-scroll no-scrollbar h-96">
-            <ViewIngredientsList recipes={selectionList} />
+            <ViewIngredientsList recipes={selectionList} ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/>
             <table className="table table-zebra">
               <tbody>
                 {selectionList.map((recipe) => (
@@ -77,7 +79,7 @@ const ViewRecipes = () => {
             </table>
           </div>
           <div className="modal-action">
-            <button className="btn" onClick={() => { console.log("Creating Shopping List") }}>Download Shopping List</button>
+            <button className="btn" onClick={() => { console.log(ingredientsList) }}>Download Shopping List</button>
             <button className="btn" onClick={() => { document.getElementById("view-selection-modal")!.classList.remove('modal-open'); }}>Close</button>
           </div>
         </div>

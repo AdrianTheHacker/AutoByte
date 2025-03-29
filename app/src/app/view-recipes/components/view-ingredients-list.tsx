@@ -1,27 +1,18 @@
 'use client'
 
 import Recipe from "../../components/objects/recipe"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { numericQuantity } from 'numeric-quantity';
 import convert from "convert";
+import Ingredient from "../../components/objects/ingredient";
 
 interface Props {
-  recipes: Recipe[]
-}
-
-interface Ingredient {
-  name: string,
-  quantity: number,
-  units: string
+  recipes: Recipe[],
+  setIngredientsList: Dispatch<SetStateAction<Ingredient[]>>,
+  ingredientsList: Ingredient[]
 }
 
 const ViewIngredientsList = (props: Props) => {
-
-  const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([
-    {name: "Avocado", quantity: 3, units: "Picks"},
-    {name: "Avocado", quantity: 3, units: "Picks"},
-    {name: "Avocado", quantity: 3, units: "Picks"},
-  ])
 
   const getFormattedIngredient = (ingredient: string): Ingredient => {
     const formattedIngredient: Ingredient = {
@@ -69,6 +60,11 @@ const ViewIngredientsList = (props: Props) => {
             formattedIngredient.units = newIngredientsList[newIngredientsIndex].units
 
             newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
+            const bestQuantity = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units.toLowerCase()).to("best", "imperial").quantity
+            const bestUnits = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units.toLowerCase()).to("best", "imperial").unit
+
+            newIngredientsList[newIngredientsIndex].quantity = bestQuantity
+            newIngredientsList[newIngredientsIndex].units = bestUnits
             return
           }
           
@@ -84,8 +80,8 @@ const ViewIngredientsList = (props: Props) => {
   }
 
   useEffect(() => {
-    setIngredientsList(getIngredientsList(props.recipes))
-  }, [props])
+    props.setIngredientsList(getIngredientsList(props.recipes))
+  }, [props.recipes])
 
   return (
     <div tabIndex={0} className="collapse collapse-arrow bg-base-100 border-base-300 border">
@@ -94,12 +90,12 @@ const ViewIngredientsList = (props: Props) => {
       <div className="collapse-content text-sm">
         <table className="table table-zebra" >
           <tbody>
-            {ingredientsList.map((ingredient, ingredientIndex) => {
+            {props.ingredientsList.map((ingredient, ingredientIndex) => {
               return (
                 <tr key={ingredient.name.concat(String(ingredientIndex))}>
                   <td>{ingredient.name}</td>
-                  <td>{ingredient.quantity}</td>
-                  <td>{ingredient.units}</td>
+                  <td>{ingredient.quantity == 0 ? "For Taste" : ingredient.quantity}</td>
+                  <td>{ingredient.units == "Picks" ? "" : ingredient.units}</td>
                 </tr>
               )
             })}
