@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "convert": "^5.9.0",
     "firebase": "^11.5.0",
     "next": "15.2.2",
     "numeric-quantity": "^2.0.1",

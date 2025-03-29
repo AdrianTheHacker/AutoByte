@@ -3,6 +3,7 @@
 import Recipe from "../../components/objects/recipe"
 import { useEffect, useState } from "react"
 import { numericQuantity } from 'numeric-quantity';
+import convert from "convert";
 
 interface Props {
   recipes: Recipe[]
@@ -62,6 +63,15 @@ const ViewIngredientsList = (props: Props) => {
 
         for(let newIngredientsIndex = 0; newIngredientsIndex < newIngredientsList.length; newIngredientsIndex++) {
           if(newIngredientsList[newIngredientsIndex].name !== formattedIngredient.name) continue
+          
+          if(formattedIngredient.units !== "Picks") {
+            formattedIngredient.quantity = convert(formattedIngredient.quantity, formattedIngredient.units.toLowerCase()).to(newIngredientsList[newIngredientsIndex].units.toLowerCase())
+            formattedIngredient.units = newIngredientsList[newIngredientsIndex].units
+
+            newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
+            return
+          }
+          
           newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
           return
         }

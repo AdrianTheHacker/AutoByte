@@ -77,6 +77,7 @@ const ViewRecipes = () => {
             </table>
           </div>
           <div className="modal-action">
+            <button className="btn" onClick={() => { console.log("Creating Shopping List") }}>Download Shopping List</button>
             <button className="btn" onClick={() => { document.getElementById("view-selection-modal")!.classList.remove('modal-open'); }}>Close</button>
           </div>
         </div>
