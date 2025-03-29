@@ -3,9 +3,9 @@
 import { database } from "../firebase.env.config.js"
 import { useState, useEffect } from "react"
 import { collection, onSnapshot } from "firebase/firestore"
-import Recipe from "../components/objects/recipe.js"
-import Link from "next/link.js"
-import IngredientsList from "./components/ingredients-list.tsx"
+import Recipe from "../components/objects/recipe"
+import Link from "next/link"
+import ViewIngredientsList from "./components/view-ingredients-list"
 
 const ViewRecipes = () => {
   const [recipes, setRecipes] = useState([])
@@ -43,13 +43,14 @@ const ViewRecipes = () => {
           </figure> */}
           <h3 className="font-bold text-lg text-center mb-4">Your Selection</h3>
           <div className="overflow-x-auto overflow-y-scroll no-scrollbar h-96">
-            <IngredientsList />
+            <ViewIngredientsList recipes={selectionList} />
             <table className="table table-zebra">
               <tbody>
                 {selectionList.map((recipe) => (
                   <tr key={recipe.id}>
                     <td><button className="btn font-bold" onClick={() => {
                       recipe.Quantity += 1
+
                       setSelectionCount(selectionCount + 1)
                     }}>+</button></td>
                     <th>{recipe.Quantity}</th>
@@ -106,6 +107,7 @@ const ViewRecipes = () => {
                       id: recipe.id,
                       Title: recipe.Title,
                       Description: recipe.Description,
+                      Ingredients: recipe.Ingredients,
                       Source: recipe.Source,
                       Quantity: 1
                     }])
