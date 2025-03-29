@@ -23,7 +23,7 @@ const ViewRecipes = () => {
         }
       }))
     })
-  })
+  }, [])
   
   const getIngredientQuantity = (ingredientName: string): string => {
     if (typeof(ingredientName.split(" [")[1]) != "undefined") return ingredientName.split(" [")[1].split("]")[0]
@@ -91,8 +91,6 @@ const ViewRecipes = () => {
                 <div className="justify-end card-actions">
                   <button className="btn" onClick={() => {
                     setSelectionCount(selectionCount => selectionCount + 1)
-
-                    console.log(selectionList)
                     
                     for(let i = 0; i < selectionList.length; i++) {
                       if(selectionList[i].id !== recipe.id) continue
@@ -131,9 +129,7 @@ const ViewRecipes = () => {
                 <div className="overflow-y-scroll no-scrollbar max-h-60">
                   <p className="font-bold py-4 text-lg">Description</p>
                   <p className="py-4 text-lg">{recipe.Description}</p>
-
                   <p className="font-bold py-4 text-lg">Ingredients</p>
-
                   <table className="table table-zebra">
                     <tbody>
                       {recipe.Ingredients.map((ingredient) => (
