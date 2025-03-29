@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { collection, onSnapshot } from "firebase/firestore"
 import Recipe from "../components/objects/recipe.js"
 import Link from "next/link.js"
+import IngredientsList from "./components/ingredients-list.tsx"
 
 const ViewRecipes = () => {
   const [recipes, setRecipes] = useState([])
@@ -40,8 +41,9 @@ const ViewRecipes = () => {
               alt={recipe.Title}
               className="rounded-xl" />
           </figure> */}
-          <h3 className="font-bold text-lg">Your Selection</h3>
+          <h3 className="font-bold text-lg text-center mb-4">Your Selection</h3>
           <div className="overflow-x-auto overflow-y-scroll no-scrollbar h-96">
+            <IngredientsList />
             <table className="table table-zebra">
               <tbody>
                 {selectionList.map((recipe) => (
