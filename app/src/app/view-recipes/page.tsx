@@ -46,7 +46,26 @@ const ViewRecipes = () => {
               <tbody>
                 {selectionList.map((recipe) => (
                   <tr key={recipe.id}>
+                    <td><button className="btn font-bold" onClick={() => {
+                      recipe.Quantity += 1
+                      setSelectionCount(selectionCount + 1)
+                    }}>+</button></td>
                     <th>{recipe.Quantity}</th>
+                    <td>
+                      <button className="btn font-bold" onClick={() => {
+                        recipe.Quantity -= 1
+                        setSelectionCount(selectionCount - 1)
+
+                        if(recipe.Quantity === 0) {
+                          setSelectionList(selectionList => {
+                            const newSelectionList = [...selectionList]
+                            const index = newSelectionList.indexOf(recipe);
+                            newSelectionList.splice(index, 1);
+                            return newSelectionList
+                          })
+                        }
+                      }}>-</button>
+                    </td>
                     <td>{recipe.Title}</td>
                     <td><Link href={recipe.Source} className="link link-hover">Source</Link></td>
                   </tr>
