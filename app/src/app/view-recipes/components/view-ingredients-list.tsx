@@ -12,7 +12,7 @@ interface Props {
   ingredientsList: Ingredient[]
 }
 
-const ViewIngredientsList = (props: Props) => {
+export const ViewIngredientsList = (props: Props) => {
 
   const getFormattedIngredient = (ingredient: string): Ingredient => {
     const formattedIngredient: Ingredient = {
@@ -46,35 +46,41 @@ const ViewIngredientsList = (props: Props) => {
       set ingredientsList to newIngredientsList
     */}
     const newIngredientsList: Ingredient[] = []
+    
+    for(let recipesIndex = 0; recipesIndex < recipes.length; recipesIndex++) {
+      for(let ingredientsIndex = 0; ingredientsIndex < recipes[recipesIndex].Ingredients.length; ingredientsIndex++) {
+        const formattedIngredient: Ingredient = getFormattedIngredient(recipes[recipesIndex].Ingredients[ingredientsIndex])
+        formattedIngredient.quantity *= recipes[recipesIndex].Quantity
+        formattedIngredient.units = formattedIngredient.units.toLowerCase()
 
-    recipes.forEach((recipe) => {
-      recipe.Ingredients.forEach((ingredient) => {
-        const formattedIngredient = getFormattedIngredient(ingredient)
-        formattedIngredient.quantity *= recipe.Quantity
-
-        for(let newIngredientsIndex = 0; newIngredientsIndex < newIngredientsList.length; newIngredientsIndex++) {
-          if(newIngredientsList[newIngredientsIndex].name !== formattedIngredient.name) continue
-          
-          if(formattedIngredient.units !== "Picks") {
-            formattedIngredient.quantity = convert(formattedIngredient.quantity, formattedIngredient.units.toLowerCase()).to(newIngredientsList[newIngredientsIndex].units.toLowerCase())
-            formattedIngredient.units = newIngredientsList[newIngredientsIndex].units
-
-            newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
-            const bestQuantity = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units.toLowerCase()).to("best", "imperial").quantity
-            const bestUnits = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units.toLowerCase()).to("best", "imperial").unit
-
-            newIngredientsList[newIngredientsIndex].quantity = bestQuantity
-            newIngredientsList[newIngredientsIndex].units = bestUnits
-            return
-          }
-          
-          newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
-          return
+        if(newIngredientsList.indexOf(formattedIngredient) === -1) { // Ingredient isn't in newIngredientsList
+          newIngredientsList.push(formattedIngredient)
+          continue
         }
-        
-        newIngredientsList.push(formattedIngredient)
-      })
-    })
+
+        const newIngredientsIndex: number = newIngredientsList.indexOf(formattedIngredient)
+
+        if(formattedIngredient.units === "Picks") {
+          newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
+          continue
+        }
+
+        newIngredientsList[newIngredientsIndex].quantity += convert(formattedIngredient.quantity, formattedIngredient.units).to(newIngredientsList[newIngredientsIndex].units).quantity
+      }
+    }
+
+    for(let newIngredientsIndex = 0; newIngredientsIndex < newIngredientsList.length; newIngredientsIndex++) {
+      if(newIngredientsList[newIngredientsIndex].units === "picks") {
+        newIngredientsList[newIngredientsIndex].units = ""
+        continue
+      }
+
+      const bestQuantity = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units).to("best").quantity
+      const bestUnits = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units).to("best").unit
+
+      newIngredientsList[newIngredientsIndex].quantity = Math.round((bestQuantity + Number.EPSILON) * 100) / 100
+      newIngredientsList[newIngredientsIndex].units = bestUnits
+    }
 
     return newIngredientsList
   }
@@ -90,20 +96,16 @@ const ViewIngredientsList = (props: Props) => {
       <div className="collapse-content text-sm">
         <table className="table table-zebra" >
           <tbody>
-            {props.ingredientsList.map((ingredient, ingredientIndex) => {
-              return (
-                <tr key={ingredient.name.concat(String(ingredientIndex))}>
-                  <td>{ingredient.name}</td>
-                  <td>{ingredient.quantity == 0 ? "For Taste" : ingredient.quantity}</td>
-                  <td>{ingredient.units == "Picks" ? "" : ingredient.units}</td>
-                </tr>
-              )
-            })}
+            {props.ingredientsList.map((ingredient, ingredientIndex) => (
+              <tr key={ingredient.name.concat(String(ingredientIndex))}>
+                <td>{ingredient.name}</td>
+                <td>{ingredient.quantity == 0 ? "For Taste" : ingredient.quantity}</td>
+                <td>{ingredient.units == "Picks" ? "" : ingredient.units}</td>
+              </tr>
+            ))}
           </tbody>
          </table>
       </div>
     </div>
   )
 }
-
-export default ViewIngredientsList
