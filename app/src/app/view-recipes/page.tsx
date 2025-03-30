@@ -51,9 +51,25 @@ const ViewRecipes = () => {
                 {selectionList.map((recipe) => (
                   <tr key={recipe.id}>
                     <td><button className="btn font-bold" onClick={() => {
-                      recipe.Quantity += 1
-
-                      setSelectionCount(selectionCount + 1)
+                      setSelectionCount(selectionCount => selectionCount + 1)
+                    
+                      for(let i = 0; i < selectionList.length; i++) {
+                        if(selectionList[i].id !== recipe.id) continue
+                        setSelectionList(selectionList => {
+                          const newSelectionList = [...selectionList]
+                          newSelectionList[i].Quantity += 1
+                          return newSelectionList
+                        })
+                        return
+                      }
+                      setSelectionList([...selectionList, {
+                        id: recipe.id,
+                        Title: recipe.Title,
+                        Description: recipe.Description,
+                        Ingredients: recipe.Ingredients,
+                        Source: recipe.Source,
+                        Quantity: 1
+                      }])
                     }}>+</button></td>
                     <th>{recipe.Quantity}</th>
                     <td>
@@ -61,6 +77,14 @@ const ViewRecipes = () => {
                         recipe.Quantity -= 1
                         setSelectionCount(selectionCount - 1)
 
+                        setSelectionList(selectionList => {
+                          const newSelectionList = [...selectionList]
+                          const removeIndex = newSelectionList.indexOf(recipe)
+                          newSelectionList[removeIndex].Quantity = recipe.Quantity
+
+                          return newSelectionList
+                        })
+                        
                         if(recipe.Quantity === 0) {
                           setSelectionList(selectionList => {
                             const newSelectionList = [...selectionList]
