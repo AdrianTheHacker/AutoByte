@@ -5,9 +5,8 @@ import { useState, useEffect } from "react"
 import { collection, onSnapshot } from "firebase/firestore"
 import Recipe from "../components/objects/recipe"
 import Link from "next/link"
-import { ViewIngredientsList } from "./components/view-ingredients-list"
+import { IngredientsList } from "./components/ingredients-list"
 import Ingredient from "../components/objects/ingredient"
-import { NodeNextRequest } from "next/dist/server/base-http/node"
 
 const ViewRecipes = () => {
   const [recipes, setRecipes] = useState([])
@@ -78,7 +77,11 @@ const ViewRecipes = () => {
           </figure> */}
           <h3 className="font-bold text-lg text-center mb-4">Your Selection</h3>
           <div className="overflow-x-auto overflow-y-scroll no-scrollbar h-96 ">
-            <ViewIngredientsList recipes={selectionList} ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/>
+          <div tabIndex={0} className="collapse collapse-arrow bg-base-100 border-base-300 border">
+            <input type="checkbox" />
+            <h2 className="collapse-title font-semibold">Ingredients List</h2>
+            <IngredientsList recipes={selectionList} ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/>
+          </div>
             <table className="table table-zebra">
               <tbody>
                 {selectionList.map((recipe) => (

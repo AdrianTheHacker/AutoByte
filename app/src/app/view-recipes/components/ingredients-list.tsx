@@ -91,17 +91,17 @@ export const IngredientsList = (props: Props) => {
 
   return (
     <div tabIndex={0} className="bg-base-100 overflow-x-auto">
-        <table className="table table-zebra" >
-          <tbody>
-            {props.ingredientsList.map((ingredient, ingredientIndex) => (
-              <tr key={ingredient.name.concat(String(ingredientIndex))}>
-                <td>{ingredient.name}</td>
-                <td>{ingredient.quantity == 0 ? "For Taste" : ingredient.quantity}</td>
-                <td>{ingredient.units == "Picks" ? "" : ingredient.units}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <table className="table table-zebra" >
+        <tbody>
+          {props.ingredientsList.map((ingredient, ingredientIndex) => (
+            <tr key={ingredient.name.concat(String(ingredientIndex))}>
+              <td>{ingredient.name}</td>
+              <td>{ingredient.quantity == 0 ? "For Taste" : ingredient.quantity}</td>
+              <td>{ingredient.units == "Picks" ? "" : ingredient.units}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
