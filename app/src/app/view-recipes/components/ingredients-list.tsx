@@ -12,7 +12,7 @@ interface Props {
   ingredientsList: Ingredient[]
 }
 
-export const ViewIngredientsList = (props: Props) => {
+export const IngredientsList = (props: Props) => {
 
   const getFormattedIngredient = (ingredient: string): Ingredient => {
     const formattedIngredient: Ingredient = {
@@ -90,10 +90,7 @@ export const ViewIngredientsList = (props: Props) => {
   }, [props.recipes])
 
   return (
-    <div tabIndex={0} className="collapse collapse-arrow bg-base-100 border-base-300 border">
-      <input type="checkbox" />
-      <div className="collapse-title font-semibold">Ingredients List</div>
-      <div className="collapse-content text-sm">
+    <div tabIndex={0} className="bg-base-100 overflow-x-auto">
         <table className="table table-zebra" >
           <tbody>
             {props.ingredientsList.map((ingredient, ingredientIndex) => (
@@ -104,8 +101,7 @@ export const ViewIngredientsList = (props: Props) => {
               </tr>
             ))}
           </tbody>
-         </table>
-      </div>
+        </table>
     </div>
   )
 }
