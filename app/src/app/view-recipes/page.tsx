@@ -7,6 +7,7 @@ import Recipe from "../components/objects/recipe"
 import Link from "next/link"
 import { IngredientsList } from "./components/ingredients-list"
 import Ingredient from "../components/objects/ingredient"
+import { sendEmail } from "../resend"
 
 const ViewRecipes = () => {
   const [recipes, setRecipes] = useState([])
@@ -139,7 +140,12 @@ const ViewRecipes = () => {
             </table>
           </div>
           <div className="modal-action">
-            <button className="btn" onClick={() => { console.log(ingredientsList) }}>Email Shopping List</button>
+            <button className="btn" onClick={() => { 
+              // console.log(ingredientsList) 
+              
+              sendEmail("hi")
+
+            }}>Email Shopping List</button>
             <button className="btn" onClick={() => { document.getElementById("view-selection-modal")!.classList.remove('modal-open'); }}>Close</button>
           </div>
         </div>

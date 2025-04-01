@@ -51,6 +51,8 @@ export { database }
 ```
 6. Run `npm run dev` to view the project!
 
+# Todo: Add instructions for resend API key
+
 ## Contact Information 🙋‍♂️
 If you're interested in the project or would like to help in the development, reach out:<br>
 [LinkedIn - AdrianTarantino](https://www.linkedin.com/in/adriantarantino/)<br>
