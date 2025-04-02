@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -7,7 +9,7 @@ export default function Home() {
           <p className="py-6">
             Your solution to fast, affordable, and healthy meal prepping.
           </p>
-          <button className="btn btn-primary">View Recipes🧑‍🍳</button>
+          <Link className="btn btn-primary" href="/view-recipes">View Recipes🧑‍🍳</Link>
         </div>
       </div>
     </div>

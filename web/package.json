@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.2.4",
+    "convert": "^5.9.0",
+    "firebase": "^11.5.0",
+    "next": "^15.2.4",
+    "numeric-quantity": "^2.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "resend": "^4.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
