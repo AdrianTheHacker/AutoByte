@@ -42,17 +42,19 @@ export default function ViewRecipes() {
           name: doc.data().Title,
           description: doc.data().Description,
           ingredients: formattedIngredients,
-          credits: doc.data().Source
+          credits: doc.data().Source,
+          quantity: 1
         }
       }))
     })
   }, [])
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content text-center">
+    <div className="hero bg-base-200 min-h-screen t">
+      <div className="hero-content text-center flex-col">
+      <h1 className="text-3xl font-bold">View Recipe</h1>
         <div className="sm:w-full md:w-full lg:w-2/3">
-          <h1 className="text-3xl font-bold">View Recipe</h1>
+          
           <div className="mt-3 flex flex-wrap flex-row gap-5 justify-center item-center">
             {recipes.map((recipe: Recipe) => {
               return (

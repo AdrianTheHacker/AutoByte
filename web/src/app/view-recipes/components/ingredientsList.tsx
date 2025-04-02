@@ -22,49 +22,50 @@ export const IngredientsList = (props: Props) => {
             Combine the quantities of both ingredients
       set ingredientsList to newIngredientsList
     */}
-    // const newIngredientsList: Ingredient[] = []
+
+    const newIngredientsList: Ingredient[] = []
     
-    // for(let recipesIndex = 0; recipesIndex < recipes.length; recipesIndex++) {
-    //   for(let ingredientsIndex = 0; ingredientsIndex < recipes[recipesIndex].Ingredients.length; ingredientsIndex++) {
-    //     const formattedIngredient: Ingredient = getFormattedIngredient(recipes[recipesIndex].Ingredients[ingredientsIndex])
-    //     formattedIngredient.quantity *= recipes[recipesIndex].Quantity
-    //     formattedIngredient.units = formattedIngredient.units.toLowerCase()
+    for(let recipesIndex = 0; recipesIndex < recipes.length; recipesIndex++) {
+      for(let ingredientsIndex = 0; ingredientsIndex < recipes[recipesIndex].ingredients.length; ingredientsIndex++) {
+        const ingredient: Ingredient = recipes[recipesIndex].ingredients[ingredientsIndex]
+        ingredient.quantity *= recipes[recipesIndex].quantity
+        ingredient.units = ingredient.units.toLowerCase()
 
-    //     if(newIngredientsList.indexOf(formattedIngredient) === -1) { // Ingredient isn't in newIngredientsList
-    //       newIngredientsList.push(formattedIngredient)
-    //       continue
-    //     }
+        if(newIngredientsList.indexOf(ingredient) === -1) { // Ingredient isn't in newIngredientsList
+          newIngredientsList.push(ingredient)
+          continue
+        }
 
-    //     const newIngredientsIndex: number = newIngredientsList.indexOf(formattedIngredient)
+        const newIngredientsIndex: number = newIngredientsList.indexOf(ingredient)
 
-    //     if(formattedIngredient.units === "Picks") {
-    //       newIngredientsList[newIngredientsIndex].quantity += formattedIngredient.quantity
-    //       continue
-    //     }
+        if(ingredient.units === "Picks") {
+          newIngredientsList[newIngredientsIndex].quantity += ingredient.quantity
+          continue
+        }
 
-    //     newIngredientsList[newIngredientsIndex].quantity += convert(formattedIngredient.quantity, formattedIngredient.units).to(newIngredientsList[newIngredientsIndex].units).quantity
-    //   }
-    // }
+        newIngredientsList[newIngredientsIndex].quantity += convert(ingredient.quantity, ingredient.units).to(newIngredientsList[newIngredientsIndex].units).quantity
+      }
+    }
 
-    // for(let newIngredientsIndex = 0; newIngredientsIndex < newIngredientsList.length; newIngredientsIndex++) {
-    //   if(newIngredientsList[newIngredientsIndex].units === "picks") {
-    //     newIngredientsList[newIngredientsIndex].units = ""
-    //     continue
-    //   }
+    for(let newIngredientsIndex = 0; newIngredientsIndex < newIngredientsList.length; newIngredientsIndex++) {
+      if(newIngredientsList[newIngredientsIndex].units === "") continue
+      if(newIngredientsList[newIngredientsIndex].units === "picks") {
+        newIngredientsList[newIngredientsIndex].units = ""
+        continue
+      }
+      
+      const bestQuantity = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units).to("best").quantity
+      const bestUnits = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units).to("best").unit
 
-    //   const bestQuantity = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units).to("best").quantity
-    //   const bestUnits = convert(newIngredientsList[newIngredientsIndex].quantity, newIngredientsList[newIngredientsIndex].units).to("best").unit
+      newIngredientsList[newIngredientsIndex].quantity = Math.round((bestQuantity + Number.EPSILON) * 100) / 100
+      newIngredientsList[newIngredientsIndex].units = bestUnits
+    }
 
-    //   newIngredientsList[newIngredientsIndex].quantity = Math.round((bestQuantity + Number.EPSILON) * 100) / 100
-    //   newIngredientsList[newIngredientsIndex].units = bestUnits
-    // }
-
-    // return newIngredientsList
-    return []
+    return newIngredientsList
   }
 
   return (
-    <div tabIndex={0} className="bg-base-100 overflow-x-auto">
+    <div className="bg-base-100 h-72 overflow-x-auto overflow-y-scroll">
       <table className="table table-zebra" >
         <tbody>
           {getIngredientsList(props.recipes).map((ingredient) => (
