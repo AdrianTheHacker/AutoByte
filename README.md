@@ -26,7 +26,7 @@ I'd like the mention though that I don't use Typescript too strict. Usually, I o
 1. Clone the Repository.
 2. Open the Repository and navigate to the `app` folder.
 3. Run `npm install` to install all necessary dependencies.
-4. Navigate to `./src/app` and create a file named `firebase.env.config.js`
+4. Navigate to `./src/app/libraries` and create a file named `firebase.env.config.js`
 5. Copy the following contents into `firebase.env.config.js`. Ensure to switch `firebaseConfig`'s data with your own:
 
 ```js

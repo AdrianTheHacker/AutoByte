@@ -1,4 +1,7 @@
+'use client'
+
 import Link from "next/link";
+import { signInWithGoogle } from "../libraries/firebase.env.config";
 
 const CreateAccountPage = () => {
   return (
@@ -24,6 +27,9 @@ const CreateAccountPage = () => {
                 <Link className="link link-hover" href="/login">Have an account? Login</Link>
               </div>
               <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-neutral mt-4" onClick={() => {
+                signInWithGoogle()
+              }}>Sign-in with Google</button>
             </fieldset>
           </div>
         </div>

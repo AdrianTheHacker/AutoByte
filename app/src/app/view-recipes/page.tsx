@@ -1,13 +1,13 @@
 'use client'
 
-import { database } from "../firebase.env.config"
+import { database } from "../libraries/firebase.env.config"
 import { useState, useEffect } from "react"
 import { collection, onSnapshot } from "firebase/firestore"
 import Recipe from "../components/objects/recipe"
 import Link from "next/link"
 import { IngredientsList } from "./components/ingredients-list"
 import Ingredient from "../components/objects/ingredient"
-import { sendEmail } from "../resend"
+import { sendEmail } from "../libraries/resend"
 
 const ViewRecipes = () => {
   const [recipes, setRecipes] = useState([])
