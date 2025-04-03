@@ -31,6 +31,8 @@ export const IngredientsList = (props: Props) => {
         ingredient.quantity *= recipes[recipesIndex].quantity
         ingredient.units = ingredient.units.toLowerCase()
 
+        // indexOf doesn't work with Ingredient[]
+        // Rewrite this and the indexOf statement below to not use "indexOf()"
         if(newIngredientsList.indexOf(ingredient) === -1) { // Ingredient isn't in newIngredientsList
           newIngredientsList.push(ingredient)
           continue
