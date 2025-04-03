@@ -65,7 +65,8 @@ export const IngredientsList = (props: Props) => {
   }
 
   return (
-    <div className="bg-base-100 h-72 overflow-x-auto overflow-y-scroll">
+    <div tabIndex={0} className="bg-base-100 h-56 overflow-x-auto overflow-y-scroll">
+      <h2 className="font-bold">Ingredients List</h2>
       <table className="table table-zebra" >
         <tbody>
           {getIngredientsList(props.recipes).map((ingredient) => (

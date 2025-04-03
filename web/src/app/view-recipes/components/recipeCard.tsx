@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Recipe } from "../objects/recipe"
-import { RecipeMoreInfoBox } from "./recipeMoreInfoBox"
+import { RecipeMoreInfo } from "./recipeMoreInfo"
 import { useState } from "react"
 
 interface Props {
@@ -25,12 +25,12 @@ export const RecipeCard = (props: Props) => {
             </button>
             <Link className="link" href={props.recipe.credits}>Source</Link>
             <button className="btn btn-primary" onClick={() => setModalState("modal-open")}>More Info</button>
-            
+
           </div>
         </div>
       </div>
       <dialog id={props.recipe.id} className={`modal ${modalState}`}>
-        <RecipeMoreInfoBox recipe={props.recipe} handleOnCloseButton={() => { setModalState("") } } />
+        <RecipeMoreInfo recipe={props.recipe} handleOnCloseButton={() => { setModalState("") } } />
       </dialog>
     </>
     
