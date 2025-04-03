@@ -57,5 +57,5 @@ export { database }
 If you're interested in the project or would like to help in the development, reach out:<br>
 [LinkedIn - AdrianTarantino](https://www.linkedin.com/in/adriantarantino/)<br>
 [Email - adriantarantino2006@gmail.com](mailto:adriantarantino2006@gmail.com)<br>
-[GitHub - AdrianTarantino](https://github.com/AdrianTarantino)<br>
+[GitHub - AdrianTheHacker](https://github.com/AdrianTheHacker)<br>
 [Personal Website - adrianthehacker.github.io](https://adrianthehacker.github.io)<br>
