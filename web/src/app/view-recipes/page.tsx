@@ -58,7 +58,6 @@ export default function ViewRecipes() {
       selectedRecipesAmount += selectedRecipe.quantity
     })
 
-    console.log(selectedRecipesAmount)
     return selectedRecipesAmount
   }
 
@@ -80,8 +79,6 @@ export default function ViewRecipes() {
             return (
               <div key={recipe.id}>
                 <RecipeCard recipe={recipe} handleAddToSelectedRecipes={() => {
-                  console.log(selectedRecipes)
-
                   for(let selectedRecipesIndex = 0; selectedRecipesIndex < selectedRecipes.length; selectedRecipesIndex++) {
                     if(selectedRecipes[selectedRecipesIndex].id !== recipe.id) continue
 
@@ -91,6 +88,7 @@ export default function ViewRecipes() {
 
                       return newSelectedRecipes
                     })
+
                     return
                   }
 
