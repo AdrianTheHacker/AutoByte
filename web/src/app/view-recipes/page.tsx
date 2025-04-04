@@ -84,7 +84,10 @@ export default function ViewRecipes() {
 
                     setSelectedRecipes(selectedRecipes => {
                       const newSelectedRecipes = [...selectedRecipes]
+
+                      // console.log(`${recipe.name} : ${recipe.quantity}`)
                       newSelectedRecipes[selectedRecipesIndex].quantity += 1
+                      // console.log(`${recipe.name} : ${recipe.quantity}`)
 
                       return newSelectedRecipes
                     })
@@ -92,14 +95,14 @@ export default function ViewRecipes() {
                     return
                   }
 
-                  setSelectedRecipes([...selectedRecipes, {
-                    id: recipe.id,
-                    name: recipe.name,
-                    description: recipe.description,
-                    ingredients: recipe.ingredients,
-                    credits: recipe.credits,
-                    quantity: 1
-                  }])
+                  setSelectedRecipes(() => {
+                    const newSelectedRecipes = [...selectedRecipes]
+                    const newSelectedRecipe = JSON.parse(JSON.stringify(recipe)) // Creates a deep copy of recipe
+                    // const newSelectedRecipe = recipe // Causes a shallow copy (newSelectedRecipe is a pointer to recipe)
+                    newSelectedRecipes.push(newSelectedRecipe)
+
+                    return newSelectedRecipes
+                  })
                 }}/>
               </div>
             )
