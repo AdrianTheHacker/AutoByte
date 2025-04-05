@@ -15,7 +15,7 @@ export const RecipeMoreInfo = (props: Props) => {
       <IngredientsList recipes={[props.recipe]} />
       
       <div className="modal-action justify-self-center" >
-          <button className="btn" onClick={props.handleOnCloseButton}>Close</button>
+        <button className="btn" onClick={props.handleOnCloseButton}>Close</button>
       </div>
     </div>
   )

@@ -39,7 +39,7 @@ export default function ViewRecipes() {
         doc.data().Ingredients.forEach((ingredient: string) => {
           formattedIngredients.push(getFormattedIngredient(ingredient))
         })  
-
+        
         return {
           id: doc.id,
           name: doc.data().Title,

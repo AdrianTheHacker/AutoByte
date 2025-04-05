@@ -25,7 +25,6 @@ export const RecipeCard = (props: Props) => {
             </button>
             <Link className="link" href={props.recipe.credits}>Source</Link>
             <button className="btn btn-primary" onClick={() => setModalState("modal-open")}>More Info</button>
-
           </div>
         </div>
       </div>
@@ -33,6 +32,5 @@ export const RecipeCard = (props: Props) => {
         <RecipeMoreInfo recipe={props.recipe} handleOnCloseButton={() => { setModalState("") } } />
       </dialog>
     </>
-    
   )
 }

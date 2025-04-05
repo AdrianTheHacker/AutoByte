@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const SelectedRecipes = (props: Props) => {
+  console.log(props.selectedRecipes)
   return (
     <div className="modal-box h-2/3">
       <IngredientsList recipes={props.selectedRecipes} />
