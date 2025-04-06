@@ -70,7 +70,7 @@ export default function ViewRecipes() {
       </button>
 
       <dialog className={`modal ${selectedRecipesModalState}`}>
-        <SelectedRecipes selectedRecipes={selectedRecipes} handleOnCloseButton={() => {setSelectedRecipesModalState("")}} />
+        <SelectedRecipes selectedRecipes={selectedRecipes} handleOnCloseButton={() => {setSelectedRecipesModalState("")}} setSelectedRecipes={setSelectedRecipes} />
       </dialog>
 
       <div className="sm:w-full md:w-full lg:w-2/3">
