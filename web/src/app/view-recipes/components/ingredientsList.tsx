@@ -14,6 +14,7 @@ export const IngredientsList = (props: Props) => {
     console.log("newIQ + (IQ * RQ) =")
     const newIngredients: Ingredient[] = []
     
+    // Todo Make Recipes Add based on Units
     // Start ChatGPT Code with modification
     recipes.forEach(recipe => {
       recipe.ingredients.forEach(ingredient => {
