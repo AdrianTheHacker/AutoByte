@@ -8,7 +8,8 @@ interface Props {
 
 export const RecipesList = (props: Props) => {
   return (
-    <div tabIndex={0} className="bg-base-100 h-56 overflow-x-auto overflow-y-scroll">
+    // <div tabIndex={0} className="bg-base-100 h-56 overflow-x-auto overflow-y-scroll">
+    <div tabIndex={0} className="bg-base-100">
       <h2 className="font-bold">Selected Recipes</h2>
       <table className="table table-zebra" >
         <tbody>

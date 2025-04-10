@@ -42,7 +42,7 @@ export const IngredientsList = (props: Props) => {
   }, [props.recipes])
 
   return (
-    <div tabIndex={0} className="bg-base-100 h-56 overflow-x-auto overflow-y-scroll">
+    <div tabIndex={0} className="bg-base-100">
       <h2 className="font-bold">Ingredients List</h2>
       <table className="table table-zebra" >
         <tbody>
