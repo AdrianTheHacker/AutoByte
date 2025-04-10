@@ -28,6 +28,9 @@ export default function ViewRecipes() {
       else formattedIngredient.quantity = numericQuantity(ingredient.split(" [")[1].split(" ")[0])
     }
     formattedIngredient.units = ingredient.split(" [")[1].split(" ")[1].slice(0, -1)
+    if(formattedIngredient.units === "Pick") {
+      formattedIngredient.units = "pick"
+    }
 
     return formattedIngredient
   }

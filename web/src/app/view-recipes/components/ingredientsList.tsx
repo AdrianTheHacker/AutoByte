@@ -1,9 +1,9 @@
 'use client'
 
 import { Recipe } from "../objects/recipe";
-import convert from "convert";
 import { Ingredient } from "../objects/ingredient";
 import { useEffect, useState } from "react";
+import { convertUnit } from "../libraries/unitConversions";
 
 interface Props {
   recipes: Recipe[],
@@ -11,7 +11,6 @@ interface Props {
 
 export const IngredientsList = (props: Props) => {
   const getIngredientsList = (recipes: Recipe[]): Ingredient[] => {
-    console.log("newIQ + (IQ * RQ) =")
     const newIngredients: Ingredient[] = []
     
     // Todo Make Recipes Add based on Units
@@ -23,9 +22,18 @@ export const IngredientsList = (props: Props) => {
         );
   
         if (existing) {
-          existing.quantity += ingredient.quantity;
+          // existing.quantity += ingredient.quantity * recipe.quantity
+          if(existing.units === "pick" && ingredient.units === "pick") {
+            existing.quantity += ingredient.quantity * recipe.quantity
+          }
+          else if(existing.units === "pick" && ingredient.units !== "pick") {}
+          else if(existing.units !== "pick" && ingredient.units === "pick") {}
+          else {
+            existing.quantity += convertUnit(ingredient.quantity, ingredient.units.toLowerCase(), existing.units.toLowerCase())
+          }
+
         } else {
-          newIngredients.push(JSON.parse(JSON.stringify(ingredient)));
+          newIngredients.push(JSON.parse(JSON.stringify(ingredient)))
           newIngredients[newIngredients.length - 1].quantity *= recipe.quantity
         }
       });
@@ -50,7 +58,7 @@ export const IngredientsList = (props: Props) => {
             return (<tr key={ingredient.name}>
               <td>{ingredient.name}</td>
               <td>{ingredient.quantity == 0 ? "For Taste" : ingredient.quantity}</td>
-              <td>{ingredient.units == "Picks" ? "" : ingredient.units}</td>
+              <td>{ingredient.units == "pick" ? "" : ingredient.units}</td>
             </tr> 
           )})}
         </tbody>
