@@ -13,49 +13,51 @@ For those wondering, the description was written by ChatGPT. I write code, not s
 | Area | Name |
 | --------- | ---- |
 | Frontend/Routing 🖥️| NextJS with Tailwind and Typescript |
-| Component Library 🧩 | DaisyUI |
 | Database🗄️ | Firebase - Firestore Database |
+| Component Library 🧩 | DaisyUI |
+| Email Service📫 | Resend |
 | UI Design 🎨 | Canva |
-
-I'd like the mention though that I don't use Typescript too strict. Usually, I only add types to the codebase to assist with state management and accessing data from database.
 
 ## Developer Setup Instructions 🧑‍💻
 *Ensure NodeJS and npm are installed on your machine.<br>
 *If you plan on developing a new feature, please do so in a separate branch.<br>
-*Ensure ALL code is written with indentation set to 2 spaces.
-1. Clone the Repository.
-2. Open the Repository and navigate to the `app` folder.
+*Ensure <b><u>ALL</u></b> code is written with indentation set to 2 spaces ([Stack Overflow - Modifying Indentation Settings in VsCode](https://stackoverflow.com/questions/34174207/how-to-change-indentation-in-visual-studio-code)).
+
+#### General 
+1. Clone the repository.
+2. Open the repository and navigate to the `web` directory.
 3. Run `npm install` to install all necessary dependencies.
-4. Navigate to `./src/app/libraries` and create a file named `firebase.env.config.js`
-5. Copy the following contents into `firebase.env.config.js`. Ensure to switch `firebaseConfig`'s data with your own:
+4. Setup project dependencies list below (Firebase, Resend, etc.)
+5. Run a dev build of the project by navigating to the `web` directory and running `npm run dev`.
 
-```js
-import { initializeApp } from "firebase/app"
-import { getFirestore } from "firebase/firestore"
+#### Database🗄️- Firebase 
+1. Clone the Repository.
+2. Open the Repository and navigate to the `web` folder.
+3. Run `npm install` to install all necessary dependencies.
+4. Navigate to `./environment` and make a copy of `firebase.config.EXAMPLE.ts` in the same directory.
+5. Rename this copy to `firebase.config.env.ts`.
+6. Switch all relevant data in `firebaseConfig`'s data with your own.
 
+```ts
 const firebaseConfig = {
-  apiKey: "YOUR API KEY",
-  authDomain: "YOUR AUTH DOMAIN",
-  databaseURL: "YOUR DATABASE URL",
-  projectId: "YOUR PROJECT ID",
-  storageBucket: "YOUR STORAGE BUCKET",
-  messagingSenderId: "YOUR MESSAGING SENDER ID",
-  appId: "YOUR APP ID",
-  measurementId: "YOUR MEASUREMENT ID"
+  apiKey: "API KEY",
+  authDomain: "AUTH DOMAIN",
+  databaseURL: "DATABASE URL",
+  projectId: "PROJECT ID",
+  storageBucket: "STORAGE BUCKET",
+  messagingSenderId: "MESSAGING SENDER ID",
+  appId: "APP ID",
+  measurementId: "MEASUREMENT ID"
 }
 
-const app = initializeApp(firebaseConfig)
-const database = getFirestore(app)
-
-export { database }
+export { firebaseConfig }
 ```
-6. Run `npm run dev` to view the project!
 
-# Todo: Add instructions for resend API key
+#### Email Service - Resend📫
 
 ## Contact Information 🙋‍♂️
 If you're interested in the project or would like to help in the development, reach out:<br>
 [LinkedIn - AdrianTarantino](https://www.linkedin.com/in/adriantarantino/)<br>
 [Email - adriantarantino2006@gmail.com](mailto:adriantarantino2006@gmail.com)<br>
-[GitHub - AdrianTarantino](https://github.com/AdrianTarantino)<br>
+[GitHub - AdrianTheHacker](https://github.com/AdrianTheHacker)<br>
 [Personal Website - adrianthehacker.github.io](https://adrianthehacker.github.io)<br>
