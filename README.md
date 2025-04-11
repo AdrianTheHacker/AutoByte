@@ -27,14 +27,14 @@ For those wondering, the description was written by ChatGPT. I write code, not s
 1. Clone the repository.
 2. Open the repository and navigate to the `web` directory.
 3. Run `npm install` to install all necessary dependencies.
-4. Setup project dependencies list below (Firebase, Resend, etc.)
+4. Setup project dependencies listed below (Firebase, Resend, etc.)
 5. Run a dev build of the project by navigating to the `web` directory and running `npm run dev`.
 
 #### Database🗄️- Firebase 
 1. Clone the Repository.
 2. Open the Repository and navigate to the `web` folder.
 3. Run `npm install` to install all necessary dependencies.
-4. Navigate to `./environment` and make a copy of `firebase.config.EXAMPLE.ts` in the same directory.
+4. Make a copy of `firebase.config.EXAMPLE.ts` in the same directory.
 5. Rename this copy to `firebase.config.env.ts`.
 6. Switch all relevant data in `firebaseConfig`'s data with your own.
 

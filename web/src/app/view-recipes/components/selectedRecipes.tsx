@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Recipe } from "../objects/recipe"
 import { IngredientsList } from "./ingredientsList"
+import { ExportForm } from "./exportForm"
 import { RecipesList } from "./recipesList"
 
 interface Props {
@@ -38,10 +39,7 @@ export const SelectedRecipes = (props: Props) => {
     <div className="modal-box h-2/3">
       <div className={`selectionPageContentHeight overflow-y-scroll ${fieldState[0] === "dock-active" ? "" : "hidden"}`}><RecipesList recipes={props.selectedRecipes} setRecipesList={props.setSelectedRecipes}/></div>
       <div className={`selectionPageContentHeight overflow-y-scroll ${fieldState[1] === "dock-active" ? "" : "hidden"}`}><IngredientsList recipes={props.selectedRecipes}/></div>
-      <div className={`selectionPageContentHeight overflow-y-scroll ${fieldState[2] === "dock-active" ? "" : "hidden"}`}>
-        <h2 className="font-bold">Ingredients List</h2>
-        
-      </div>
+      <div className={`selectionPageContentHeight overflow-y-scroll ${fieldState[2] === "dock-active" ? "" : "hidden"}`}><ExportForm /></div>
 
       <div className="dock dock-lg">
         <button className={`${fieldState[0]}`} onClick={() => handleFieldStateChange(0)}>

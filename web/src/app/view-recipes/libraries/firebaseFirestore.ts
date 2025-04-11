@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
-import { firebaseConfig } from "../../../../environment/firebase.config.env"
+import { firebaseConfig } from "../../../../firebase.config.env"
 
 const app = initializeApp(firebaseConfig)
 const database = getFirestore(app)
